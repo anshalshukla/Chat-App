@@ -1,14 +1,5 @@
 const socket = io()
 
-// socket.on("countUpdated", (count) => {
-//     console.log("The count has been updated.", count)
-// })
-
-// document.querySelector("#increment").addEventListener("click", () => {
-//     console.log("Clicked.")
-//     socket.emit("increment")
-// })
-
 //Elements
 const $messageForm = document.querySelector("#message-form")
 const $messageFormInput = $messageForm.querySelector("input")
@@ -83,7 +74,6 @@ socket.on("roomData", ({ room, users }) => {
 $messageForm.addEventListener("submit", (e) => {
     e.preventDefault()
     $messageFormButton.setAttribute("disabled", "disabled")
-    //const message = document.querySelector("input").value
     const message = e.target.elements.message.value
     socket.emit("sendMessage", message, (error) => {
         $messageFormButton.removeAttribute("disabled")
